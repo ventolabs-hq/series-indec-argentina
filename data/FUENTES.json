@@ -1,0 +1,51 @@
+[
+ {
+  "id": "148.3_INIVELNAL_DICI_M_26",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Índice de Precios al Consumidor Nacional (IPC). Base diciembre 2016."
+ },
+ {
+  "id": "148.3_IREGULANAL_DICI_M_22",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Índice de Precios al Consumidor Nacional (IPC). Base diciembre 2016."
+ },
+ {
+  "id": "143.3_NO_PR_2004_A_31",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Estimador Mensual de Actividad Económica (EMAE). Base 2004"
+ },
+ {
+  "id": "149.1_TL_INDIIOS_OCTU_0_21",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Índice de salarios. Base octubre 2016"
+ },
+ {
+  "id": "150.1_CSTA_BARIA_0_D_26",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Valores de la Canasta Básica de Alimentos  y Canasta Básica Total."
+ },
+ {
+  "id": "150.1_CSTA_BATAL_0_D_20",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Valores de la Canasta Básica de Alimentos  y Canasta Básica Total."
+ },
+ {
+  "id": "350.1_TOTAL_EXPO_PP__22",
+  "license": "Creative Commons Attribution 4.0",
+  "source": "Instituto Nacional de Estadística y Censos (INDEC)",
+  "publisher": "Subsecretaría de Programación Macroeconómica",
+  "dataset": "Exportaciones por provincia y rubro"
+ }
+]
