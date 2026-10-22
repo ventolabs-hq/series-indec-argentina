@@ -1,12 +1,84 @@
-# Series INDEC Argentina (CSV abiertos)
+# Series INDEC Argentina en CSV: IPC, salarios, canastas y EMAE listos para planilla
 
-Series económicas oficiales de Argentina publicadas por el **INDEC**, descargadas de la API de Series de Tiempo de **Datos Argentina** (datos.gob.ar) y ordenadas en CSV listos para Excel, Google Sheets, LibreOffice, Python o R. Gratis, con licencia **CC BY 4.0**.
+Datos oficiales del **INDEC** (vía Datos Argentina, datos.gob.ar) en CSV que abren bien en Excel, Google Sheets, LibreOffice, Python o R. Sirven, por ejemplo, para **actualizar un alquiler, un sueldo o una deuda por inflación (IPC)**, comparar tu sueldo con la inflación o seguir las canastas básicas. Gratis, sin registro, licencia **CC BY 4.0**.
 
-- 7 series mensuales/anuales desde diciembre de 2016: IPC, IPC regulados, EMAE, salarios, canastas y exportaciones.
-- Cada serie en **dos formatos**: internacional (`,` y punto decimal) y Argentina (`;` y coma decimal).
-- Un script sin dependencias para volver a descargarlas cuando INDEC publica datos nuevos.
+## Últimos valores de este repositorio
 
-## Series
+| Serie | Archivo | Último período | Valor | Var. mensual | Var. interanual |
+|---|---|---|---|---|---|
+| IPC nivel general nacional (dic-2016 = 100) | `ipc_nivel` | 2026-08 | 12.276,766 | +1,7 % | +33,5 % |
+| IPC regulados nacional (dic-2016 = 100) | `ipc_regulados` | 2026-08 | 12.935,9719 | +2,2 % | +43,7 % |
+| Índice de salarios (oct-2016 = 100) | `salarios` | 2026-07 | 9.708,64 | +2,8 % | +36,2 % |
+| Canasta básica alimentaria, adulto equivalente ($) | `cba` | 2026-08 | 235.103,36 | +2,6 % | +39,6 % |
+| Canasta básica total, adulto equivalente ($) | `cbt` | 2026-08 | 519.578,43 | +2,6 % | +38,3 % |
+| EMAE desestacionalizado (2004 = 100) | `emae_desest` | 2026-07 | 149,648 (redondeado) | −2,9 % | −1,2 % |
+
+Los valores son los de `data/` tal como los publica la fuente (el EMAE, redondeado a tres decimales). Las variaciones están calculadas con esos mismos valores (redondeadas a un decimal) y no son cifras oficiales del INDEC. Si INDEC ya publicó un mes más nuevo, la fuente manda.
+
+## Cómo actualizar un monto por IPC
+
+La cuenta es siempre la misma:
+
+```
+monto actualizado = monto original × IPC (mes final) ÷ IPC (mes inicial)
+```
+
+El índice está en `data/ipc_nivel.csv` (o `ipc_nivel_es-AR.csv` si tu planilla usa coma decimal). Qué meses usar (por ejemplo, el último índice publicado antes de la fecha de ajuste) lo define tu contrato o acuerdo, no este repositorio.
+
+### Alquiler
+
+Un alquiler de **$500.000** pactado en febrero de 2026 que se ajusta por IPC hasta agosto de 2026:
+
+```
+500.000 × 12.276,766 ÷ 10.714,6255 = 572.897,58   (+14,6 %)
+```
+
+### Sueldo
+
+¿Cuánto tendría que cobrar hoy alguien que en agosto de 2025 cobraba **$1.000.000** para mantener el poder de compra?
+
+```
+1.000.000 × 12.276,766 ÷ 9.193,2441 = 1.335.411,73   (+33,5 %)
+```
+
+Y para ver si los salarios le ganaron a la inflación, se comparan los dos índices en el mismo período. De julio de 2025 a julio de 2026 el índice de salarios subió 36,2 % (9.708,64 ÷ 7.129,22) y el IPC 33,8 % (12.076,3937 ÷ 9.023,973): en promedio, el salario real subió alrededor de 1,8 % (1,3618 ÷ 1,3383).
+
+### Deuda
+
+Una deuda de **$200.000** de diciembre de 2025 actualizada por IPC a agosto de 2026:
+
+```
+200.000 × 12.276,766 ÷ 10.121,3715 = 242.590,96   (+21,3 %)
+```
+
+### En la planilla
+
+En Google Sheets podés traer la serie directo desde este repositorio:
+
+```
+=IMPORTDATA("https://raw.githubusercontent.com/ventolabs-hq/series-indec-argentina/main/data/ipc_nivel.csv")
+```
+
+Eso deja `periodo` en la columna A, `fecha` en B y `valor` en C. Después, con el monto en `E1`, el mes inicial en `E2` y el mes final en `E3` (escritos como `202602` y `202608`):
+
+```
+=E1 * BUSCARV(E3; A:C; 3; FALSO) / BUSCARV(E2; A:C; 3; FALSO)
+```
+
+(En Excel en inglés o con configuración regional de EE. UU.: `VLOOKUP` y `,` como separador. Si `IMPORTDATA` lee mal los decimales, cambiá la configuración regional de la hoja o descargá `ipc_nivel_es-AR.csv`.)
+
+En Python:
+
+```python
+import pandas as pd
+url = "https://raw.githubusercontent.com/ventolabs-hq/series-indec-argentina/main/data/ipc_nivel.csv"
+ipc = pd.read_csv(url, dtype={"periodo": str}).set_index("periodo")["valor"]
+print(500_000 * ipc["202608"] / ipc["202602"])  # 572897.58...
+```
+
+Estos ejemplos son solo cuentas con datos públicos. No son asesoramiento legal, contable ni financiero.
+
+## Las 7 series
 
 | Archivo | Serie | Id en Datos Argentina | Frecuencia | Unidad | Desde | Hasta* |
 |---|---|---|---|---|---|---|
