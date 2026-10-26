@@ -2,6 +2,8 @@
 
 Datos oficiales del **INDEC** (vía Datos Argentina, datos.gob.ar) en CSV que abren bien en Excel, Google Sheets, LibreOffice, Python o R. Sirven, por ejemplo, para **actualizar un alquiler, un sueldo o una deuda por inflación (IPC)**, comparar tu sueldo con la inflación o seguir las canastas básicas. Gratis, sin registro, licencia **CC BY 4.0**.
 
+> ¿Querés la planilla lista, con fórmulas de ajuste por IPC? **[Planilla Pro](https://ventolabs-hq.github.io/planilla-pro/)** (5 USDT, muestra gratis).
+
 ## Últimos valores de este repositorio
 
 | Serie | Archivo | Último período | Valor | Var. mensual | Var. interanual |
