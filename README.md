@@ -2,8 +2,6 @@
 
 Datos oficiales del **INDEC** (vía Datos Argentina, datos.gob.ar) en CSV que abren bien en Excel, Google Sheets, LibreOffice, Python o R. Sirven, por ejemplo, para **actualizar un alquiler, un sueldo o una deuda por inflación (IPC)**, comparar tu sueldo con la inflación o seguir las canastas básicas. Gratis, sin registro, licencia **CC BY 4.0**.
 
-> ¿Querés la planilla lista, con fórmulas de ajuste por IPC? **[Planilla Pro](https://ventolabs-hq.github.io/planilla-pro/)** (5 USDT, muestra gratis).
-
 ## Últimos valores de este repositorio
 
 | Serie | Archivo | Último período | Valor | Var. mensual | Var. interanual |
@@ -146,3 +144,7 @@ Los datos se publican tal cual, sin garantía. No constituyen asesoramiento de n
 ## English
 
 Official Argentine economic series from **INDEC** (CPI, regulated-prices CPI, EMAE activity index, wages index, basic food and total baskets, annual exports), pulled from the Datos Argentina time-series API and stored as CSV in two flavours: `<series>.csv` (comma, dot decimal, ISO dates) and `<series>_es-AR.csv` (semicolon, comma decimal, DD/MM/YYYY, UTF-8 BOM). Columns: `periodo` (YYYYMM), `fecha`, `valor` (unmodified published value). Refresh monthly with `python3 scripts/actualizar_series.py` (stdlib only, robots-aware, licence-checked, never drops existing periods). Data: CC BY 4.0, primary source INDEC via Datos Argentina; code: MIT. Not an official INDEC product.
+
+---
+
+¿Preferís una planilla ya armada con fórmulas de ajuste por IPC? Hay una opcional en [Planilla Pro](https://ventolabs-hq.github.io/planilla-pro/) (5 USDT, muestra gratis). Los datos de este repositorio son y seguirán siendo gratuitos.
